@@ -15,6 +15,8 @@ public class A1Jedi {
 		ArrayList<Double> prices = new ArrayList<Double>();
 		ArrayList<Integer> custCounts = new ArrayList<Integer>();
 		
+		ArrayList<Boolean> alreadyTheres = new ArrayList<Boolean>();
+		
 		for(int i = 0; i < itemTotal; i++)
 		{
 			String itemName = scan.next();
@@ -24,6 +26,7 @@ public class A1Jedi {
 			prices.add(price);
 			itemCounts.add(0);
 			custCounts.add(0);
+			alreadyTheres.add(false);
 		}
 		
 		int customers = scan.nextInt();
@@ -36,13 +39,12 @@ public class A1Jedi {
 			
 			for (int k = 0; k < cItems; k++)
 			{
+				
 				int numItems = scan.nextInt();
 				String itemCall = scan.next();
 				
 				for(int l = 0; l < itemNames.size(); l++)
-				{	
-					//boolean alreadyThere = false; //fix boolean placement to prevent repeats
-					System.out.println(itemCall.equalsIgnoreCase(itemNames.get(l)));
+				{			
 					if(itemCall.equalsIgnoreCase(itemNames.get(l)))
 					{
 						//cTotal += prices.get(l)*numItems;
@@ -53,16 +55,17 @@ public class A1Jedi {
 						itemCounts.set(l, temp);
 						
 						
-						//if(alreadyThere == false)
-						//{
+						if(alreadyTheres.get(l) == false)
+						{
 							int temp2 = custCounts.get(l);
 							temp2 += 1;
 							custCounts.set(l, temp2);
 							
 							//System.out.println(itemCounts);
+							alreadyTheres.set(l, true);
 							break;
-							//alreadyThere = true;
-						//}
+							
+						}
 					}
 				}
 			}
