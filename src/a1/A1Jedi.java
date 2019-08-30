@@ -69,6 +69,11 @@ public class A1Jedi {
 					}
 				}
 			}
+			for(int rip = 0; rip < itemCounts.size(); rip++)
+			{
+				alreadyTheres.set(rip, false);
+			}
+			
 		}
 		
 		String custString = "No";
